@@ -10,6 +10,8 @@ You are given the cost of each balloon and problems that each participant solve.
 
 */
 
+#include <stdio.h>
+
 int main() {
 
 	int T;
@@ -18,8 +20,8 @@ int main() {
 	// Enter the number of test cases
 	scanf("%d", &T);
 	// Scan each test case
-	for(i=0; i<T, i++) {
-		int green_balloon, purp_balloon;
+	for(i=0; i<T; i++) {
+		int green_balloon, purple_balloon;
 		int cost1 = 0;
 		int cost2 = 0;
 		int num_participants;
@@ -27,18 +29,18 @@ int main() {
 
 		// Enter the price of green and purple ballons
 		// The values should be separated by commas
-		scanf("%d %d",&green_balloon, &purp_balloon);
+		scanf("%d %d",&green_balloon, &purple_balloon);
 
 		if(i%2) {
 			// Swap the values
 			int temp = green_balloon;
-			green_balloon = purp_balloon;
-			purp_balloon = temp;
+			green_balloon = purple_balloon;
+			purple_balloon = temp;
 		} 
 		
 
 		// Enter the number of participants
-		scanf("d", num_participants);
+		scanf("%d", &num_participants);
 
 		for(j = 0; j < num_participants; j++) {
 			int val1, val2;
@@ -47,7 +49,7 @@ int main() {
 			cost2 += purple_balloon*val2;
 		}
 
-		printf("%d %d\n", cost1, cost12);
+		printf("%d\n", cost1+cost2);
 	}
 	
 
