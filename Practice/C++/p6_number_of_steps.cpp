@@ -1,7 +1,7 @@
 /* Number of steps
 
 Problem
-You are given two arrays  and . In each step, you can set  if . Determine the minimum number of steps that are required to make all 's equal.
+You are given two arrays  and . In each step, you can set  if . Determine the minimum number of steps that are required to make all a's equal.
 
 Input format
 
@@ -61,10 +61,6 @@ int calc_number_steps_method(int C){
 	// Logic
 	for(int i = 0; i < C; i++) {
 
-		if(arrA[i] == minA){
-			continue;
-		}
-
 #ifdef METHOD_1
 		while(arrA[i] > minA) {
 			arrA[i] = arrA[i] - arrB[i];
@@ -81,6 +77,10 @@ int calc_number_steps_method(int C){
 			numOfSteps += diff/arrB[i];
 		} 
 #endif
+		if(arrA[i] == minA){
+			continue;
+		}
+		
 		if(arrA[i] < minA){
 			numOfSteps = -1;
 			break;
