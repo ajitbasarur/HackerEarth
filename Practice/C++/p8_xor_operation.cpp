@@ -44,10 +44,6 @@ S' = {6,5,14,13,10,9} which is same as S={5,6,13,14,9,10}
 */
 
 #include<iostream>
-#include<array>
-#include<algorithm>
-
-//#include <unordered_map>
 
 using namespace std;
 
@@ -57,7 +53,6 @@ int main(void){
 	int t;
 	int n = 0;
 	
-	
 	// Enter the number of test cases
 	cin >> t;
 
@@ -65,17 +60,15 @@ int main(void){
 	for(int i=0; i<t; i++){
 		//unordered_map<int, int> arrayMap;
 		int k=0;
+		int cumSum1 = 0;
+		int cumSum2 = 0;
 
 		// Enter the size of the test S
 		cin >> n;
 
 		// Create an array for the following numbers
 		int *S1 = new int[n];
-		int *S2 = new int[n];
-	
-		
-		//array<int, n> S1;	
-		//array<int, n> S2;		
+		int *S2 = new int[n];	
 		
 		// Get the numbers from the stdio
 		// Simultaneously find the value of k
@@ -83,37 +76,26 @@ int main(void){
 		for(int j=0; j<n; j++) {
 			cin >> S1[j];
 			k = S1[j] ^ k;
-			//arrayMap[S1[j]] = 1;
+			cumSum1 += S1[j];
 		}
-
-		// Sort the array
-		//sort(S1,S1+n);
 
 		// Iterate through each of the elements
 		// Apply XOR operator and find out if it exists
-		int match = 0;
 		for(int j=0; j<n; j++) {
-			/*if(1 != arrayMap[(S1[j]^k)]){
-				k = -1;
-				break;
-			}*/
 			S2[j] = S1[j] ^ k;
-
-			for(int m=0; m<n; m++) {
-				if(S1[m] == S2[j]) {
-					match++;
-					break;
-				}
-			}
-			
-			if(match !=(j+1)) {
-				k = -1;
-				break;
-			};
+			cumSum2 += S2[j];
 		}
 
-		// Sort the second array
-		//sort(S2,S2+n);
+		// This is an important operation
+		// Instead of comparing each element of an array, their properties are calculated.
+		// Right now, only the additional property of set S is used.
+		// This is done to reduce the computational cost.
+		// Sorting arrays and comparing each element requires N +2NlogN operations
+		// unordered_map using hash tables is also an expensive operation
+
+		if(cumSum1 != cumSum2) {
+			k = -1;
+		}
 
 		cout << k << endl;
 
