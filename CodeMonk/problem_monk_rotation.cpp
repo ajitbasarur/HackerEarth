@@ -31,19 +31,28 @@ int main() {
 	unsigned int *A = new unsigned int [N];
 	unsigned int *B = new unsigned int[N];
 
-	while(i++ < N) {
-		A[i] = i;
+	while(i < N) {
+		int index = (i+K)%N;
+		A[index] = i;
+		cout << index;
+		i++;
 	}
 
-	cout << A << "\n";
+	cout << endl;
+
+	i = 0;
+	while(i++ < N) {
+		cout << A[i];
+	}
+	cout << endl;
 
 	// Rotate the array
-	memcpy(B, &A[K], N-K);
+	/*memcpy(B, &A[K], N-K);
 	for(i=0; i<K; i++) {
 		B[N-K+i] = A[i];
 	}
 
-	cout << B << "\n";
+	cout << B << "\n";*/
 
 
 	// Delete the array before the program is exited
