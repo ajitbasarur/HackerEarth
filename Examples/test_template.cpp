@@ -14,15 +14,16 @@ int main(){
 	
 	IteratorType begin = aContainer;
 	
+	cout << "Testing STL" << endl;
 	IteratorType end = aContainer + Count;
 	
 	for(int i=0; i < Count; i++){
-		aContainer[i] = i*i;
+		aContainer[i] = 2*i;
 	}
 	
 	int Number = 0;
 	
-	while(-1 == Number){
+	while(-1 != Number){
 		cout << "Enter the number to be searched " << endl;
 		
 		cin >> Number;
@@ -30,7 +31,7 @@ int main(){
 		if(-1 != Number){
 			IteratorType position = find(begin, end, Number);
 			if(position != end){
-				cout << "Found at position " << (position-begin) << endl;
+				cout << "Found at position " <<(position-begin) << endl;
 			}
 		}
 	}
@@ -39,10 +40,9 @@ int main(){
 }
 
 IteratorType find(IteratorType begin, IteratorType end, const int& Value){
-	while((begin != end) && (*begin == Value)) {
+	while((begin != end) && (*begin != Value)) {
 		++begin;
-		
-		return begin;
 	}
 	
+	return begin;
 }
